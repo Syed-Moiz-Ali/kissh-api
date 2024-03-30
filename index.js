@@ -9,6 +9,18 @@ const baseUrl = "https://kisskh.co";
 // JSON parsing middleware
 app.use(express.json());
 
+
+app.get("/", (req, res) => {
+    res.send(`
+      <h1>KissKH API</h1>
+      <p>Popular Anime: <a href="/api/popular">/api/popular</a></p>
+      <p>Latest Anime: <a href="/api/latest">/api/latest</a></p>
+      <p>Anime Detail: <a href="/api/detail/{id}">/api/detail/{id}</a></p>
+      <p>Episode List: <a href="/api/episodes/{id}">/api/episodes/{id}</a></p>
+      <p>Video List: <a href="/api/videos/{id}">/api/videos/{id}</a></p>
+    `);
+  });
+  
 // Popular Anime
 app.get("/api/:word", async (req, res) => {
   const page = req.query.page || 1;
